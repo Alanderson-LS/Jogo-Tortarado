@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://beufraofiugvr"]
+
+[ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="1_nsm10"]
+[ext_resource type="PackedScene" uid="uid://dnrxcns4fxtjd" path="res://scenes/stair_transition.tscn" id="3_8lkp2"]
+[ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="3_udpx5"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nsm10"]
+a = Vector2(64000, 0)
+b = Vector2(-64000, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2i0da"]
+a = Vector2(-500, 0)
+b = Vector2(500, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i0da"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsm10"]
+size = Vector2(30, 59.25)
+
+[sub_resource type="Curve2D" id="Curve2D_8lkp2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -130)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l85ff"]
+size = Vector2(127.5, 187)
+
+[node name="Outside" type="Node2D" unique_id=1893350408]
+
+[node name="Outside" type="Marker2D" parent="." unique_id=668393266 groups=["spawn point"]]
+position = Vector2(-665, -215)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=769522013]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1825814621]
+position = Vector2(0, 128)
+scale = Vector2(100, 2)
+texture = ExtResource("1_nsm10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=227719484]
+shape = SubResource("SegmentShape2D_nsm10")
+
+[node name="House" type="StaticBody2D" parent="." unique_id=1153298674]
+z_index = -1
+position = Vector2(2503, -128)
+
+[node name="Icon2" type="Sprite2D" parent="House" unique_id=1567862274]
+position = Vector2(-163, -238)
+rotation = -0.44361556
+scale = Vector2(4.8055134, 2.2291362)
+texture = ExtResource("1_nsm10")
+
+[node name="Icon3" type="Sprite2D" parent="House" unique_id=620127334]
+position = Vector2(202, -244)
+rotation = 0.4736053
+scale = Vector2(4.185681, 2.367031)
+texture = ExtResource("1_nsm10")
+
+[node name="Icon" type="Sprite2D" parent="House" unique_id=1532237123]
+position = Vector2(0, -80)
+scale = Vector2(7.82, 2.7600005)
+texture = ExtResource("1_nsm10")
+
+[node name="Sprite2D" type="Sprite2D" parent="House" unique_id=2061835413]
+position = Vector2(0, 63)
+scale = Vector2(7.82, 1)
+texture = ExtResource("1_nsm10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House" unique_id=1342937290]
+shape = SubResource("SegmentShape2D_2i0da")
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="House" unique_id=362470850]
+position = Vector2(-490, -82)
+shape = SubResource("RectangleShape2D_2i0da")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="House" unique_id=1446581144]
+position = Vector2(490, -82)
+shape = SubResource("RectangleShape2D_2i0da")
+
+[node name="StairTransition" parent="House" unique_id=481253536 instance=ExtResource("3_8lkp2")]
+position = Vector2(329, 78)
+duration = 2.0
+
+[node name="CollisionShape2D" parent="House/StairTransition" index="0" unique_id=2144807847]
+position = Vector2(0, 21.625)
+shape = SubResource("RectangleShape2D_nsm10")
+
+[node name="Path2D" parent="House/StairTransition" index="1" unique_id=28745975]
+curve = SubResource("Curve2D_8lkp2")
+
+[node name="DoorTransition" type="Area2D" parent="House" unique_id=497513784]
+position = Vector2(-63, -96)
+script = ExtResource("3_udpx5")
+target_scene = "uid://dmb4qt2okhv0s"
+spawn_point = "Door"
+metadata/_custom_type_script = "uid://c0pvna5rlt7q3"
+
+[node name="HouseDoor" type="Marker2D" parent="House/DoorTransition" unique_id=122138981]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/DoorTransition" unique_id=608501714]
+shape = SubResource("RectangleShape2D_l85ff")
+
+[node name="Sprite2D" type="Sprite2D" parent="House/DoorTransition" unique_id=702360416]
+scale = Vector2(1, 1.48)
+texture = ExtResource("1_nsm10")
+
+[node name="Mountains" type="Parallax2D" parent="." unique_id=1718860442]
+z_index = -32
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-960, -634)
+
+[node name="Icon" type="Sprite2D" parent="Mountains" unique_id=1763166656]
+position = Vector2(634.68494, 817.2617)
+rotation = -0.573568
+scale = Vector2(5.9921875, 9)
+texture = ExtResource("1_nsm10")
+
+[node name="Icon2" type="Sprite2D" parent="Mountains" unique_id=1217801479]
+position = Vector2(1152.6849, 831.2617)
+rotation = 0.8446477
+scale = Vector2(5.9921875, 9)
+texture = ExtResource("1_nsm10")
+
+[node name="Icon3" type="Sprite2D" parent="Mountains" unique_id=975021212]
+position = Vector2(1765.6849, 949.26184)
+rotation = -1.0200288
+scale = Vector2(5.9921875, 9)
+texture = ExtResource("1_nsm10")
+
+[node name="Icon6" type="Sprite2D" parent="Mountains" unique_id=97851634]
+position = Vector2(3139.685, 583)
+rotation = -0.94858766
+scale = Vector2(6.3784175, 6.7436466)
+texture = ExtResource("1_nsm10")
+
+[node name="Icon4" type="Sprite2D" parent="Mountains" unique_id=1115492320]
+position = Vector2(2750.685, 673.00006)
+rotation = 0.35142136
+scale = Vector2(5.9921875, 9)
+texture = ExtResource("1_nsm10")
+
+[node name="Icon5" type="Sprite2D" parent="Mountains" unique_id=1907886804]
+position = Vector2(3474.685, 689.26184)
+rotation = 0.35142136
+scale = Vector2(8.16619, 5.315786)
+texture = ExtResource("1_nsm10")
+
+[node name="Sun" type="Parallax2D" parent="." unique_id=464739375]
+z_index = -64
+scroll_scale = Vector2(0.1, 1)
+scroll_offset = Vector2(1574, -534)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sun" unique_id=2126458105]
+position = Vector2(64, 64)
+texture = ExtResource("1_nsm10")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Sun/Sprite2D" unique_id=1123224322]
+rotation = 0.6361631
+color = Color(1, 1, 0.1254902, 0.48235294)
+shadow_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=170309682]
+color = Color(0.72156864, 0.5372549, 0.44705883, 1)
+
+[editable path="House/StairTransition"]

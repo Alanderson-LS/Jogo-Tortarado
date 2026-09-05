@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dmb4qt2okhv0s"]
+
+[ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="1_d7po0"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2i0da"]
+a = Vector2(-1000, 0)
+b = Vector2(1000, 0)
+
+[node name="House" type="Node2D" unique_id=1394089690]
+
+[node name="Door" type="Marker2D" parent="." unique_id=1810944603 groups=["spawn point"]]
+position = Vector2(49, -80)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1219923547]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1310512805]
+shape = SubResource("SegmentShape2D_2i0da")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=183782919]
+position = Vector2(0, 64)
+scale = Vector2(100, 1)
+texture = ExtResource("1_d7po0")
+
+[node name="Label" type="Label" parent="." unique_id=935178039]
+offset_left = 168.0
+offset_top = -148.0
+offset_right = 349.0
+offset_bottom = -125.0
+text = "sei la oque botar aqui :("

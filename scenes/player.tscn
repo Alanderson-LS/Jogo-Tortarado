@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://msbs60ar4rsm"]
+
+[ext_resource type="Script" uid="uid://lvkib50pauxb" path="res://scripts/player_controller.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="2_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i0da"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l85ff"]
+size = Vector2(196, 196)
+
+[node name="Character" type="CharacterBody2D" unique_id=1215354689 node_paths=PackedStringArray("ground_raycast", "interaction_area") groups=["player"]]
+collision_layer = 0
+floor_snap_length = 32.0
+script = ExtResource("1_g2els")
+ground_raycast = NodePath("RayCast2D")
+interaction_area = NodePath("InteractionArea")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=110494886]
+light_mask = 3
+texture = ExtResource("2_qhqgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=551043829]
+shape = SubResource("RectangleShape2D_2i0da")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=832439427]
+target_position = Vector2(0, 128)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=174368586]
+enabled = false
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=40431420]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1001387649]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_l85ff")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
