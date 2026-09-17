@@ -5,6 +5,9 @@ const PLAYER_SCENE = preload("res://scenes/player.tscn")
 var active_player: int = 0
 var can_change_player: bool = true
 
+# indexed by player id
+var inventories: Array[Inventory] = [Inventory.new(), Inventory.new()]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().process_frame
