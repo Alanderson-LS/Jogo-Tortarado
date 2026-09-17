@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://beufraofiugvr"]
 
+[ext_resource type="Script" uid="uid://btet3ghnd7w3" path="res://scripts/some_testing_object.gd" id="1_7r1kg"]
 [ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="1_nsm10"]
+[ext_resource type="Script" uid="uid://chrku8u2w8nmm" path="res://scripts/electric_bogaloo.gd" id="2_bkgx0"]
 [ext_resource type="PackedScene" uid="uid://dnrxcns4fxtjd" path="res://scenes/stair_transition.tscn" id="3_8lkp2"]
 [ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="3_udpx5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i0da"]
+radius = 136.09187
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0mo1"]
+size = Vector2(212, 208)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nsm10"]
 a = Vector2(64000, 0)
@@ -27,6 +35,20 @@ point_count = 2
 size = Vector2(127.5, 187)
 
 [node name="Outside" type="Node2D" unique_id=1893350408]
+
+[node name="KeyGiber" type="Area2D" parent="." unique_id=934398588]
+position = Vector2(1016, -143)
+script = ExtResource("1_7r1kg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KeyGiber" unique_id=1555913843]
+shape = SubResource("CircleShape2D_2i0da")
+
+[node name="KeyTakerer" type="Area2D" parent="." unique_id=1239243218]
+position = Vector2(1455, -160)
+script = ExtResource("2_bkgx0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KeyTakerer" unique_id=1764722034]
+shape = SubResource("RectangleShape2D_l0mo1")
 
 [node name="Outside" type="Marker2D" parent="." unique_id=668393266 groups=["spawn point"]]
 position = Vector2(-665, -215)
@@ -91,7 +113,7 @@ shape = SubResource("RectangleShape2D_nsm10")
 curve = SubResource("Curve2D_8lkp2")
 
 [node name="DoorTransition" type="Area2D" parent="House" unique_id=497513784]
-position = Vector2(-63, -96)
+position = Vector2(-82, -96)
 script = ExtResource("3_udpx5")
 target_scene = "uid://dmb4qt2okhv0s"
 spawn_point = "Door"

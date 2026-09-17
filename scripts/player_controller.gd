@@ -38,10 +38,22 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if character_id == GameState.active_player:
 		if event.is_action_pressed("interact") and nearby_interactable:
-			nearby_interactable.interact()
+			# try to use item
+			if GameState.inventories[character_id].current_item != -1 and\
+			   nearby_interactable.has_method("use_item"):
+				nearby_interactable.use_item(
+					GameState.inventories[character_id]
+					.inventory[GameState.inventories[character_id].current_item]
+				)
+				GameState.inventories[character_id].current_item = -1
+			# normal interact
+			elif GameState.inventories[character_id].current_item == -1 and\
+			   nearby_interactable.has_method("interact"):
+				nearby_interactable.interact()
+			
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
-	if area.has_method("interact"):
+	if area.has_method("interact") or area.has_method("use_item"):
 		nearby_interactable = area
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
