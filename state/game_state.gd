@@ -46,6 +46,15 @@ func load_scene(scene: String, spawn_name: String):
 	current_scene.add_child(player_instance_1)
 	current_scene.add_child(player_instance_2)
 
+func active_inventory() -> Inventory:
+	return inventories[active_player]
+
+func held_item_index() -> int:
+	return active_inventory().current_item
+
+func held_item() -> ItemData:
+	return active_inventory().inventory[held_item_index()]
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("up"):
 		GameState.change_active_player()

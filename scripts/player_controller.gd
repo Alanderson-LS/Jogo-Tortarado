@@ -40,15 +40,12 @@ func _input(event: InputEvent) -> void:
 	if character_id == GameState.active_player:
 		if event.is_action_pressed("interact") and nearby_interactable:
 			# try to use item
-			if GameState.inventories[character_id].current_item != -1 and\
+			if GameState.held_item_index() != -1 and\
 			   nearby_interactable.has_method("use_item"):
-				nearby_interactable.use_item(
-					GameState.inventories[character_id]
-					.inventory[GameState.inventories[character_id].current_item]
-				)
-				GameState.inventories[character_id].current_item = -1
+				nearby_interactable.use_item(GameState.held_item())
+				GameState.active_inventory().current_item = -1
 			# normal interact
-			elif GameState.inventories[character_id].current_item == -1 and\
+			elif GameState.held_item_index() == -1 and\
 			   nearby_interactable.has_method("interact"):
 				nearby_interactable.interact()
 			
