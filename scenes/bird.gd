@@ -5,7 +5,6 @@ var comida = Vector2(550, 650)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	entrar()
-	sair()
 
 func entrar():
 	var tween = create_tween()
