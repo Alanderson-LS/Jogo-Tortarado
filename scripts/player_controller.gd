@@ -13,6 +13,7 @@ var nearby_interactable: Node = null
 func _ready() -> void:
 	Dialogic.timeline_started.connect(_on_dialogue_started)
 	Dialogic.timeline_ended.connect(_on_dialogue_ended)
+	TaskManager.set_current_task("teste real de task aaaaaa")
 
 func set_controlled(controlled: bool):
 	if controlled:
