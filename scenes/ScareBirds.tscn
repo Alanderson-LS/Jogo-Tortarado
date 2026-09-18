@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c5b8bldts5nyg"]
+
+[ext_resource type="Script" uid="uid://bwax8ihi41c0n" path="res://scenes/scare_birds.gd" id="1_gjobr"]
+
+[node name="ScareBirds" type="Node2D" unique_id=647248361]
+script = ExtResource("1_gjobr")
