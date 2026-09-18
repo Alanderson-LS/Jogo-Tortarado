@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://chrku8u2w8nmm" path="res://scripts/electric_bogaloo.gd" id="2_bkgx0"]
 [ext_resource type="PackedScene" uid="uid://dnrxcns4fxtjd" path="res://scenes/stair_transition.tscn" id="3_8lkp2"]
 [ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="3_udpx5"]
-[ext_resource type="Script" uid="uid://jfwb3240tlqm" path="res://scenes/task_label.gd" id="6_bkgx0"]
+[ext_resource type="Script" uid="uid://jfwb3240tlqm" path="res://scripts/task_label.gd" id="6_bkgx0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2i0da"]
 radius = 136.09187
