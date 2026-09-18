@@ -11,4 +11,4 @@ func interact():
 		GameState.inventories[GameState.active_player].current_item = 0
 		print(GameState.inventories[GameState.active_player].inventory)
 		
-		TaskManager.set_current_task("Use the not key")
+		UiManager.set_current_task("Use the not key")

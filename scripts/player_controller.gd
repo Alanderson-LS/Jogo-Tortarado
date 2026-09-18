@@ -13,7 +13,7 @@ var nearby_interactable: Node = null
 func _ready() -> void:
 	Dialogic.timeline_started.connect(_on_dialogue_started)
 	Dialogic.timeline_ended.connect(_on_dialogue_ended)
-	TaskManager.set_current_task("teste real de task aaaaaa")
+	UiManager.set_current_task("teste real de task aaaaaa")
 
 func set_controlled(controlled: bool):
 	if controlled:
@@ -48,7 +48,6 @@ func _input(event: InputEvent) -> void:
 			elif GameState.held_item_index() == -1 and\
 			   nearby_interactable.has_method("interact"):
 				nearby_interactable.interact()
-			
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area.has_method("interact") or area.has_method("use_item"):

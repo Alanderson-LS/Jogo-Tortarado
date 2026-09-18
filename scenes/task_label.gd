@@ -5,7 +5,7 @@ var duration = 1.0
 
 func _ready() -> void:
 	original_text = text
-	TaskManager.task_changed.connect(_on_task_changed)
+	UiManager.task_changed.connect(_on_task_changed)
 
 func _on_task_changed(task: String) -> void:
 	await strikethrough()

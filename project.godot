@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 Dialogic="*uid://ds2q0uclmolvu"
 GameState="*uid://dkmjqq7c87rvc"
-TaskManager="*uid://x56gosye60cs"
+UiManager="*uid://x56gosye60cs"
 
 [dialogic]
 
