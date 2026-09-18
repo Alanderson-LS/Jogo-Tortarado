@@ -66,6 +66,13 @@ func diminuir_projetil(projetil):
 
 	tween.tween_callback(projetil.queue_free)
 
+func _on_pedra_hit(alvo: Area2D, projetil: Control) -> void:
+	var bird = alvo.get_parent()
+	if bird.has_method("sair"):
+		bird.sair()
+	if is_instance_valid(projetil):
+		projetil.queue_free()
+
 func atirar():
 	print("ATIROU!")
 	var projetil = TextureRect.new()
@@ -83,6 +90,22 @@ func atirar():
 		size.x / 2 - projetil.size.x / 2,
 		size.y - projetil.size.y / 2
 	)
+	
+	var area = Area2D.new()
+	area.collision_layer = 2  # camada da "pedra" (ajuste ao seu projeto)
+	area.collision_mask = 1   # detecta objetos na camada dos pássaros
+	area.add_to_group("pedra") 
+	
+	var shape = CollisionShape2D.new()
+	var circle = CircleShape2D.new()
+	circle.radius = projetil.size.x / 2  # raio aproximado da textura
+	shape.shape = circle
+	area.add_child(shape)
+
+	projetil.add_child(area)
+	area.area_entered.connect(_on_pedra_hit.bind(projetil))
+	# se o pássaro for CharacterBody2D/StaticBody2D em vez de Area2D, use:
+	# area.body_entered.connect(_on_pedra_hit.bind(projetil))
 	
 	# Guarda onde o mouse estava quando clicou
 	var destino = get_viewport().get_mouse_position() - projetil.size / 2

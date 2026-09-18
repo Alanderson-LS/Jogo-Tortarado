@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dmc4phgn7xcc1" path="res://images.jpeg" id="1_fhryg"]
 [ext_resource type="Script" uid="uid://c8opbxjoe5r0h" path="res://scenes/CrosshairControl.gd" id="2_6rwqx"]
 [ext_resource type="Texture2D" uid="uid://bj1xswfvf5rxo" path="res://1545215.png" id="3_7qcu2"]
+[ext_resource type="PackedScene" uid="uid://c5b8bldts5nyg" path="res://scenes/ScareBirds.tscn" id="4_6rwqx"]
 
 [node name="Node2D" type="Node2D" unique_id=638693664]
 
@@ -33,3 +34,5 @@ mouse_filter = 2
 texture = ExtResource("3_7qcu2")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BirdController" parent="." unique_id=647248361 instance=ExtResource("4_6rwqx")]
