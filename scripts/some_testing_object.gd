@@ -10,3 +10,5 @@ func interact():
 		print("setting selected object cause i can't do ui this time")
 		GameState.inventories[GameState.active_player].current_item = 0
 		print(GameState.inventories[GameState.active_player].inventory)
+		
+		TaskManager.set_current_task("Use the not key")
