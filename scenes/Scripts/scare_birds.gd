@@ -2,11 +2,18 @@ extends Node2D
 const BIRD = preload("res://scenes/bird.tscn")
 
 var landOptions = [100,200,300,400,500,600,700,800,900,1000]
+@export var birdsHit = 0
 
 func pick_random_no_repeat():
 	var chosen = landOptions.pick_random()
 	landOptions.erase(chosen)
 	return chosen
+	
+func check_win_condition(condition):
+	if condition >= 4:
+		print("Assustou os passaro")
+	else:
+		return
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

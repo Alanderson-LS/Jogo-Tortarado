@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://dmc4phgn7xcc1" path="res://scenes/Sprites/images.jpeg" id="1_fhryg"]
 [ext_resource type="Script" uid="uid://c8opbxjoe5r0h" path="res://scenes/Scripts/CrosshairControl.gd" id="2_6rwqx"]
 [ext_resource type="Texture2D" uid="uid://bj1xswfvf5rxo" path="res://scenes/Sprites/1545215.png" id="3_7qcu2"]
-[ext_resource type="PackedScene" uid="uid://c5b8bldts5nyg" path="res://scenes/ScareBirds.tscn" id="4_6rwqx"]
 [ext_resource type="Script" uid="uid://byjakdienhw2k" path="res://scenes/Scripts/SfxManager.gd" id="5_7qcu2"]
 [ext_resource type="AudioStream" uid="uid://ua3e3p54vpp" path="res://scenes/SFXs/crow.mp3" id="5_monbf"]
 [ext_resource type="AudioStream" uid="uid://ca0uw0x02u02l" path="res://scenes/SFXs/throw2.mp3" id="7_m24k2"]
+[ext_resource type="Script" uid="uid://bwax8ihi41c0n" path="res://scenes/Scripts/scare_birds.gd" id="7_monbf"]
 
 [node name="Node2D" type="Node2D" unique_id=638693664]
 
@@ -38,8 +38,6 @@ texture = ExtResource("3_7qcu2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BirdController" parent="." unique_id=647248361 instance=ExtResource("4_6rwqx")]
-
 [node name="SfxCrow" type="AudioStreamPlayer2D" parent="." unique_id=1446086968]
 stream = ExtResource("5_monbf")
 script = ExtResource("5_7qcu2")
@@ -48,3 +46,6 @@ script = ExtResource("5_7qcu2")
 stream = ExtResource("7_m24k2")
 volume_db = -10.0
 script = ExtResource("5_7qcu2")
+
+[node name="BirdControl" type="Node2D" parent="." unique_id=60788020]
+script = ExtResource("7_monbf")
