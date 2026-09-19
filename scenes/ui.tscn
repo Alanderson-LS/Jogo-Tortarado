@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://dpc3ikxdaojs2"]
+
+[ext_resource type="Script" uid="uid://jfwb3240tlqm" path="res://scripts/task_label.gd" id="1_x4jx1"]
+[ext_resource type="PackedScene" uid="uid://ds21gqikj36pd" path="res://scenes/inventory_slot.tscn" id="2_x4jx1"]
+
+[node name="Ui" type="Control" unique_id=246404245]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1920053436]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="TaskContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1122330097]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TaskLabel" type="RichTextLabel" parent="HBoxContainer/TaskContainer" unique_id=1332095769]
+layout_mode = 2
+bbcode_enabled = true
+text = "testestasdsada"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_x4jx1")
+
+[node name="InventoryContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1220763535]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.7
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InventoryContainer" unique_id=1000278076]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InventoryContainer/MarginContainer" unique_id=528571142]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Slot0" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=2062202642 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+
+[node name="Spacer1" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1429315043]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot1" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1801668330 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 1
+
+[node name="Spacer2" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=2128048021]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot2" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=267283577 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 2
+
+[node name="Spacer3" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1277515003]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot3" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=949726018 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 3
+
+[node name="Spacer4" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=338607987]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot4" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=319621259 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 4
+
+[node name="Spacer5" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1949683827]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot5" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=822394711 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 5
+
+[node name="Spacer6" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1090592383]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot6" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=2089937869 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 6
+
+[node name="Spacer7" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=2072537242]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot7" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=33183937 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 7
+
+[node name="Spacer8" type="Control" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=293376194]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot8" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1568051793 instance=ExtResource("2_x4jx1")]
+layout_mode = 2
+id = 8

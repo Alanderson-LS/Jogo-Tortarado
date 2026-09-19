@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
-GameState="*uid://dkmjqq7c87rvc"
 UiManager="*uid://x56gosye60cs"
+GameState="*uid://dkmjqq7c87rvc"
 
 [dialogic]
 

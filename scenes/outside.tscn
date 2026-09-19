@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://chrku8u2w8nmm" path="res://scripts/electric_bogaloo.gd" id="2_bkgx0"]
 [ext_resource type="PackedScene" uid="uid://dnrxcns4fxtjd" path="res://scenes/stair_transition.tscn" id="3_8lkp2"]
 [ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="3_udpx5"]
-[ext_resource type="Script" uid="uid://jfwb3240tlqm" path="res://scripts/task_label.gd" id="6_bkgx0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2i0da"]
 radius = 136.09187
@@ -186,17 +185,5 @@ shadow_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=170309682]
 color = Color(0.72156864, 0.5372549, 0.44705883, 1)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1254898102]
-
-[node name="TaskLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=533357702]
-offset_left = 30.0
-offset_top = 30.0
-offset_right = 132.0
-offset_bottom = 53.0
-bbcode_enabled = true
-text = "Task de teste"
-fit_content = true
-script = ExtResource("6_bkgx0")
 
 [editable path="House/StairTransition"]

@@ -5,4 +5,4 @@ extends Area2D
 @export var spawn_point: String
 
 func interact():
-	GameState.load_scene(target_scene, spawn_point)
+	GameState.change_scene(target_scene, spawn_point)
