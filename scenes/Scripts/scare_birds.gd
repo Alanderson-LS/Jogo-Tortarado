@@ -33,5 +33,5 @@ func create_bird(x, y, landPos):
 	
 	add_child(new_bird)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

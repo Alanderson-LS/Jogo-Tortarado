@@ -75,7 +75,6 @@ func _on_pedra_hit(alvo: Area2D, projetil: Control) -> void:
 	var bird = alvo.get_parent()
 	if bird.has_method("sair"):
 		bird_Control.birdsHit += 1
-		print(bird_Control.birdsHit)
 		bird_Control.check_win_condition(bird_Control.birdsHit)
 		sfx_Crow.play()
 		bird.sair()
@@ -83,7 +82,6 @@ func _on_pedra_hit(alvo: Area2D, projetil: Control) -> void:
 		projetil.queue_free()
 
 func atirar():
-	print("ATIROU!")
 	var projetil = TextureRect.new()
 
 	projetil.texture = projetil_texture
