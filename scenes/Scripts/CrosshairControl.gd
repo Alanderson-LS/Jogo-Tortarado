@@ -1,5 +1,8 @@
 extends Control
 
+@onready var sfx_Crow: AudioStreamPlayer2D = $"../../SfxCrow"
+@onready var sfx_Throw: AudioStreamPlayer2D = $"../../SfxThrow"
+
 @export var projetil_texture: Texture2D = preload("res://rock.png")
 @export var velocidade := 800.0
 @export var drop := 100.0
@@ -8,6 +11,7 @@ extends Control
 @export var velocidade_giro := 2.0
 @export var tempo_para_diminuir := 0.5
 @export var velocidade_diminuicao := 0.5
+
 
 var cooldown_restante := 0.0
 
@@ -69,6 +73,8 @@ func diminuir_projetil(projetil):
 func _on_pedra_hit(alvo: Area2D, projetil: Control) -> void:
 	var bird = alvo.get_parent()
 	if bird.has_method("sair"):
+		#VfxManager.play_vfx(preload("res://scenes/SFXs/crow.mp3"), alvo.global_position)
+		sfx_Crow.play()
 		bird.sair()
 	if is_instance_valid(projetil):
 		projetil.queue_free()
@@ -90,6 +96,8 @@ func atirar():
 		size.x / 2 - projetil.size.x / 2,
 		size.y - projetil.size.y / 2
 	)
+	#VfxManager.play_vfx(preload("res://scenes/SFXs/throw1.mp3"), projetil.global_position, -10)
+	sfx_Throw.play()
 	
 	var area = Area2D.new()
 	area.collision_layer = 2  # camada da "pedra" (ajuste ao seu projeto)
