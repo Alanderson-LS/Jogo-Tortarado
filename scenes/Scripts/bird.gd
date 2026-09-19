@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var inicio = Vector2(0, 200)
-@export var comida = Vector2(550, 650)
+@export var inicio:Vector2
+@export var comida:Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	entrar()
