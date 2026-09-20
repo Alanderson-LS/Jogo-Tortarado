@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d22kpim6mmcyu"]
+
+[ext_resource type="Script" uid="uid://c8q2q8j7v2dtf" path="res://scripts/debug_panel.gd" id="1_7of2g"]
+
+[node name="DebugPanel" type="Control" unique_id=252814259]
+visible = false
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_7of2g")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=322086608]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = -91.0
+offset_right = 225.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1337381157]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1433959220]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1073794649]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=835364831]
+layout_mode = 2
+text = "Speed"
+
+[node name="SpeedSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1440535013]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 200.0
+max_value = 1200.0
+step = 10.0
+value = 300.0

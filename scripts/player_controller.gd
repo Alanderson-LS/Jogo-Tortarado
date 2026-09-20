@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+var speed = 300.0
 
 @export var ground_raycast: RayCast2D
 @export var interaction_area: Area2D
@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	if character_id == GameState.active_player:
 		if can_move:
 			var direction := Input.get_axis("left", "right")
-			velocity.x = direction * SPEED
+			velocity.x = direction * speed
 	else:
 		velocity.x = 0
 	

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jfwb3240tlqm" path="res://scripts/task_label.gd" id="1_x4jx1"]
 [ext_resource type="PackedScene" uid="uid://ds21gqikj36pd" path="res://scenes/inventory_slot.tscn" id="2_x4jx1"]
+[ext_resource type="PackedScene" uid="uid://d22kpim6mmcyu" path="res://scenes/debug_panel.tscn" id="3_yev5y"]
 
 [node name="Ui" type="Control" unique_id=246404245]
 layout_mode = 3
@@ -113,3 +114,6 @@ size_flags_horizontal = 3
 [node name="Slot8" parent="HBoxContainer/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1568051793 instance=ExtResource("2_x4jx1")]
 layout_mode = 2
 id = 8
+
+[node name="DebugPanel" parent="." unique_id=252814259 instance=ExtResource("3_yev5y")]
+layout_mode = 1
