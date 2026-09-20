@@ -51,10 +51,14 @@ func _input(event: InputEvent) -> void:
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area.has_method("interact") or area.has_method("use_item"):
+		if area.has_method("highlight"):
+			area.highlight(true)
 		nearby_interactable = area
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	if area == nearby_interactable:
+		if area.has_method("highlight"):
+			area.highlight(false)
 		nearby_interactable = null
 
 func _on_dialogue_started() -> void:
