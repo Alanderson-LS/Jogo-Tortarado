@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://b83vttdlql8rm"]
+
+[ext_resource type="Script" uid="uid://parv05men1du" path="res://scripts/bird_scare/scaring_birds.gd" id="1_abvk6"]
+[ext_resource type="Texture2D" uid="uid://dmc4phgn7xcc1" path="res://assets/sprites/field.jpeg" id="1_bhb1x"]
+[ext_resource type="Texture2D" uid="uid://7eqqdakkridl" path="res://assets/sprites/rock.png" id="2_2inkj"]
+[ext_resource type="AudioStream" uid="uid://ua3e3p54vpp" path="res://assets/sounds/crow.mp3" id="3_2inkj"]
+[ext_resource type="Texture2D" uid="uid://1dyhvf5hndai" path="res://assets/sprites/mira.png" id="4_2inkj"]
+[ext_resource type="AudioStream" uid="uid://ca0uw0x02u02l" path="res://assets/sounds/throw2.mp3" id="4_hkx30"]
+
+[sub_resource type="GDScript" id="GDScript_2dd5f"]
+script/source = "extends Node
+
+func play_sfx(stream: AudioStream, posicao: Vector2, volume_db := 0.0) -> void:
+	var player := AudioStreamPlayer2D.new()
+	player.stream = stream
+	player.global_position = posicao
+	player.bus = \"SFX\"
+	player.volume_db = volume_db
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
+"
+
+[sub_resource type="GDScript" id="GDScript_abvk6"]
+script/source = "extends Node2D
+const BIRD = preload(\"res://scenes/bird.tscn\")
+
+var landOptions = [100,200,300,400,500,600,700,800,900,1000]
+var birds_hit = 0
+func pick_random_no_repeat():
+	var chosen = landOptions.pick_random()
+	landOptions.erase(chosen)
+	return chosen
+	
+func check_win_condition(condition):
+	if condition >= 4:
+		print(\"Assustou os passaro\")
+	else:
+		return
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	create_bird(0, 200, pick_random_no_repeat())
+	create_bird(0, 100, pick_random_no_repeat())
+	create_bird(1150, 200, pick_random_no_repeat())
+	create_bird(1150, 100, pick_random_no_repeat())
+
+func create_bird(x, y, landPos):
+	var new_bird = BIRD.instantiate()
+	
+	new_bird.inicio = Vector2(x, y)
+	new_bird.comida = Vector2(
+		landPos,
+		600
+	)
+	
+	add_child(new_bird)
+"
+
+[node name="ScaringBirds" type="Control" unique_id=1348221452 node_paths=PackedStringArray("sfx_Crow", "sfx_Throw", "bird_control", "mira")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_abvk6")
+sfx_Crow = NodePath("SfxCrow")
+sfx_Throw = NodePath("SfxThrow")
+bird_control = NodePath("BirdControl")
+projetil_texture = ExtResource("2_2inkj")
+mira = NodePath("Crosshair")
+
+[node name="Field" type="TextureRect" parent="." unique_id=1454803184]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bhb1x")
+
+[node name="Crosshair" type="TextureRect" parent="." unique_id=2104593775]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("4_2inkj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SfxCrow" type="AudioStreamPlayer2D" parent="." unique_id=1585524890]
+stream = ExtResource("3_2inkj")
+volume_db = 10.0
+script = SubResource("GDScript_2dd5f")
+
+[node name="SfxThrow" type="AudioStreamPlayer2D" parent="." unique_id=214416551]
+stream = ExtResource("4_hkx30")
+script = SubResource("GDScript_2dd5f")
+
+[node name="BirdControl" type="Node2D" parent="." unique_id=578501211]
+script = SubResource("GDScript_abvk6")

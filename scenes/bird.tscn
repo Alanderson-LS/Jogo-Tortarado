@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bu6fqr8rc3dd0"]
 
-[ext_resource type="Script" uid="uid://d1pypjuq5teh8" path="res://scenes/Scripts/bird.gd" id="1_kqhkv"]
-[ext_resource type="Texture2D" uid="uid://c7jt7u7g6biat" path="res://scenes/Sprites/crow.png" id="2_3po83"]
+[ext_resource type="Script" uid="uid://d1pypjuq5teh8" path="res://scripts/bird_scare/bird.gd" id="1_kqhkv"]
+[ext_resource type="Texture2D" uid="uid://c7jt7u7g6biat" path="res://assets/sprites/crow.png" id="2_3po83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(91, 59)

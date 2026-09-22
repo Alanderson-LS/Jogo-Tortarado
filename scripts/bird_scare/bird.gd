@@ -1,13 +1,12 @@
 extends Node2D
 
-var inicio = Vector2(0, 200)
-var comida = Vector2(550, 650)
+@export var inicio: Vector2
+@export var comida: Vector2
+
+var tween
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	entrar()
-
-func entrar():
-	var tween = create_tween()
+	tween = create_tween()
 
 	position = inicio
 
@@ -19,7 +18,10 @@ func entrar():
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	
 func sair():
-	var tween = create_tween()
+	if tween:
+		tween.kill()
+		
+	tween = create_tween()
 
 	tween.tween_property(
 		$Sprite2D,

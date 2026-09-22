@@ -1,10 +1,10 @@
 extends Control
 
-@onready var sfx_Crow: AudioStreamPlayer2D = $"../../SfxCrow"
-@onready var sfx_Throw: AudioStreamPlayer2D = $"../../SfxThrow"
-@onready var bird_Control = get_node("../../BirdControl")
+@export var sfx_Crow: AudioStreamPlayer2D
+@export var sfx_Throw: AudioStreamPlayer2D
+@export var bird_control: Node2D
 
-@export var projetil_texture: Texture2D = preload("res://scenes/Sprites/rock.png")
+@export var projetil_texture: Texture2D
 @export var velocidade := 800.0
 @export var drop := 100.0
 @export var cooldown := 0.5
@@ -13,6 +13,12 @@ extends Control
 @export var tempo_para_diminuir := 0.5
 @export var velocidade_diminuicao := 0.5
 
+@export var mira: Control
+
+const BIRD = preload("res://scenes/bird.tscn")
+
+var landOptions = [100,200,300,400,500,600,700,800,900,1000]
+@export var birdsHit = 0
 
 var cooldown_restante := 0.0
 
@@ -74,8 +80,8 @@ func diminuir_projetil(projetil):
 func _on_pedra_hit(alvo: Area2D, projetil: Control) -> void:
 	var bird = alvo.get_parent()
 	if bird.has_method("sair"):
-		bird_Control.birdsHit += 1
-		bird_Control.check_win_condition(bird_Control.birdsHit)
+		bird_control.birds_hit += 1
+		bird_control.check_win_condition(bird_control.birds_hit)
 		sfx_Crow.play()
 		bird.sair()
 	if is_instance_valid(projetil):
@@ -121,13 +127,6 @@ func atirar():
 	girar_projetil(projetil)
 	diminuir_projetil(projetil)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
-@onready var mira = $TextureRect
-
 func _process(_delta):
 	mira.position = get_viewport().get_mouse_position() - mira.size / 2
 		
@@ -137,4 +136,25 @@ func _process(_delta):
 	if Input.is_action_just_pressed("click") and cooldown_restante <= 0:
 		atirar()
 		cooldown_restante = cooldown
+
+func pick_random_no_repeat():
+	var chosen = landOptions.pick_random()
+	landOptions.erase(chosen)
+	return chosen
 	
+func check_win_condition(condition):
+	if condition >= 4:
+		print("Assustou os passaro")
+	else:
+		return
+
+func create_bird(x, y, landPos):
+	var new_bird = BIRD.instantiate()
+	
+	new_bird.inicio = Vector2(x, y)
+	new_bird.comida = Vector2(
+		landPos,
+		600
+	)
+	
+	add_child(new_bird)
