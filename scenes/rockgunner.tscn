@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://f7idrdkqq8x6"]
+[gd_scene format=3 uid="uid://ppiw6i74t8ex"]
 
 [ext_resource type="Texture2D" uid="uid://dmc4phgn7xcc1" path="res://scenes/Sprites/images.jpeg" id="1_fhryg"]
 [ext_resource type="Script" uid="uid://c8opbxjoe5r0h" path="res://scenes/Scripts/CrosshairControl.gd" id="2_6rwqx"]
