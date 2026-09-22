@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ppiw6i74t8ex"]
+
+[ext_resource type="Texture2D" uid="uid://dmc4phgn7xcc1" path="res://scenes/Sprites/images.jpeg" id="1_fhryg"]
+[ext_resource type="Script" uid="uid://c8opbxjoe5r0h" path="res://scenes/Scripts/CrosshairControl.gd" id="2_6rwqx"]
+[ext_resource type="Texture2D" uid="uid://bj1xswfvf5rxo" path="res://scenes/Sprites/1545215.png" id="3_7qcu2"]
+[ext_resource type="AudioStream" uid="uid://ua3e3p54vpp" path="res://scenes/SFXs/crow.mp3" id="5_monbf"]
+[ext_resource type="AudioStream" uid="uid://ca0uw0x02u02l" path="res://scenes/SFXs/throw2.mp3" id="7_m24k2"]
+[ext_resource type="Script" uid="uid://bwax8ihi41c0n" path="res://scenes/Scripts/scare_birds.gd" id="7_monbf"]
+
+[sub_resource type="GDScript" id="GDScript_m6hxt"]
+script/source = "extends Node
+
+func play_sfx(stream: AudioStream, posicao: Vector2, volume_db := 0.0) -> void:
+	var player := AudioStreamPlayer2D.new()
+	player.stream = stream
+	player.global_position = posicao
+	player.bus = \"SFX\"
+	player.volume_db = volume_db
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
+"
+
+[node name="Node2D" type="Node2D" unique_id=638693664]
+
+[node name="Field" type="Sprite2D" parent="." unique_id=90778362]
+position = Vector2(576, 324.00003)
+scale = Vector2(1.9328861, 1.9343283)
+texture = ExtResource("1_fhryg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=57593460]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=161957687]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_6rwqx")
+velocidade_giro = 0.25
+velocidade_diminuicao = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=2141710543]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("3_7qcu2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SfxCrow" type="AudioStreamPlayer2D" parent="." unique_id=1446086968]
+stream = ExtResource("5_monbf")
+volume_db = 10.0
+script = SubResource("GDScript_m6hxt")
+
+[node name="SfxThrow" type="AudioStreamPlayer2D" parent="." unique_id=1012076393]
+stream = ExtResource("7_m24k2")
+script = SubResource("GDScript_m6hxt")
+
+[node name="BirdControl" type="Node2D" parent="." unique_id=60788020]
+script = ExtResource("7_monbf")
