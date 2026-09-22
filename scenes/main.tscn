@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://bajd5k5d1d66y"]
 
-[node name="Main" type="Node2D" unique_id=1685946265]
+[ext_resource type="Script" uid="uid://duo8f5jn2ugti" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dpc3ikxdaojs2" path="res://scenes/ui.tscn" id="2_0wfyh"]
+
+[node name="Main" type="Node2D" unique_id=638693664]
+script = ExtResource("1_o5qli")
+
+[node name="Level" type="Node2D" parent="." unique_id=73619547]
+
+[node name="Ui" type="CanvasLayer" parent="." unique_id=1103857635]
+
+[node name="Ui" parent="Ui" unique_id=246404245 instance=ExtResource("2_0wfyh")]

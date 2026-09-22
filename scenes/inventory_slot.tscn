@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ds21gqikj36pd"]
+
+[ext_resource type="Script" uid="uid://dlvsp8avpdtg0" path="res://scripts/inventory_slot.gd" id="1_dxvxp"]
+[ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="2_bxqf6"]
+
+[node name="InventorySlot" type="Control" unique_id=2062202642]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dxvxp")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=411450916]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="PanelContainer" unique_id=1871304731]
+layout_mode = 2
+toggle_mode = true
+
+[node name="Icon" type="TextureRect" parent="PanelContainer" unique_id=1627787964]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_bxqf6")
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="toggled" from="PanelContainer/Button" to="." method="_on_button_toggled"]

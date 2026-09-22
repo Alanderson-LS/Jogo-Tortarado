@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dnrxcns4fxtjd"]
+
+[ext_resource type="Script" uid="uid://c3nvncprlt2jg" path="res://scripts/stair_transition.gd" id="1_jq73h"]
+
+[node name="StairTransition" type="Area2D" unique_id=481253536 node_paths=PackedStringArray("path")]
+script = ExtResource("1_jq73h")
+path = NodePath("Path2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2144807847]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=28745975]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
