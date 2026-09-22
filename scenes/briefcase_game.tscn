@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://bmxk63qysxaed"]
 
-[ext_resource type="Texture2D" uid="uid://c45yfhh7ktsko" path="res://assets/sprites/briefcase.png" id="1_bxfb1"]
+[ext_resource type="Texture2D" uid="uid://c45yfhh7ktsko" path="res://assets/sprites/briefcase.png" id="1_3bvtu"]
+[ext_resource type="Script" uid="uid://jyfjy286shtt" path="res://scripts/briefcase_game_ctrl.gd" id="1_etmmj"]
+[ext_resource type="AudioStream" uid="uid://dnnjdb2yp26wp" path="res://assets/sfx/case_scroll_change.mp3" id="3_aadgw"]
+[ext_resource type="AudioStream" uid="uid://bqtmspwv2y1k6" path="res://assets/sfx/case_open.mp3" id="4_v02gh"]
 
-[node name="Briefcase" type="Node2D" unique_id=1670666286]
+[node name="BriefcaseGame" type="Node2D" unique_id=1670666286]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=731392690]
+[node name="BriefcaseMinigameCanvas" type="CanvasLayer" parent="." unique_id=731392690 node_paths=PackedStringArray("password", "control_panel", "button_briefcase", "sfx_click", "sfx_unlocked_case")]
+script = ExtResource("1_etmmj")
+password = [NodePath("Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0/Number"), NodePath("Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1/Number"), NodePath("Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2/Number"), NodePath("Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3/Number")]
+control_panel = NodePath("Control/BriefcaseUIPanel")
+button_briefcase = NodePath("Control/ButtonBriefcase")
+sfx_click = NodePath("../SfxScrollClick")
+sfx_unlocked_case = NodePath("../SfxCaseOpen")
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1410283747]
+[node name="Control" type="Control" parent="BriefcaseMinigameCanvas" unique_id=1410283747]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonBriefcase" type="TextureButton" parent="CanvasLayer/Control" unique_id=1429059318]
+[node name="ButtonBriefcase" type="TextureButton" parent="BriefcaseMinigameCanvas/Control" unique_id=1429059318]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,11 +31,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 action_mode = 0
-texture_normal = ExtResource("1_bxfb1")
+texture_normal = ExtResource("1_3bvtu")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="BriefcaseUIPanel" type="Panel" parent="CanvasLayer/Control" unique_id=942194942]
+[node name="BriefcaseUIPanel" type="Panel" parent="BriefcaseMinigameCanvas/Control" unique_id=942194942]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,7 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="NumRowHBoxCont" type="HBoxContainer" parent="CanvasLayer/Control/BriefcaseUIPanel" unique_id=1547632983]
+[node name="NumRowHBoxCont" type="HBoxContainer" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel" unique_id=1547632983]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,18 +59,18 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="NumColVBoxCont0" type="VBoxContainer" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=942100039]
+[node name="NumColVBoxCont0" type="VBoxContainer" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=942100039]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Increase" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0" unique_id=172961851]
+[node name="Increase" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0" unique_id=172961851]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▲"
 
-[node name="Number" type="Label" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0" unique_id=2117840498]
+[node name="Number" type="Label" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0" unique_id=2117840498]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 128
@@ -69,25 +78,25 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Decrease" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0" unique_id=1884929366]
+[node name="Decrease" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0" unique_id=1884929366]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▼"
 
-[node name="NumColVBoxCont1" type="VBoxContainer" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=1077047233]
+[node name="NumColVBoxCont1" type="VBoxContainer" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=1077047233]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Increase" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1" unique_id=244876255]
+[node name="Increase" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1" unique_id=244876255]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▲"
 
-[node name="Number" type="Label" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1" unique_id=1145137007]
+[node name="Number" type="Label" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1" unique_id=1145137007]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 128
@@ -95,25 +104,25 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Decrease" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1" unique_id=1637800889]
+[node name="Decrease" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1" unique_id=1637800889]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▼"
 
-[node name="NumColVBoxCont2" type="VBoxContainer" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=1549536765]
+[node name="NumColVBoxCont2" type="VBoxContainer" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=1549536765]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Increase" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2" unique_id=490695095]
+[node name="Increase" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2" unique_id=490695095]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▲"
 
-[node name="Number" type="Label" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2" unique_id=2113308571]
+[node name="Number" type="Label" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2" unique_id=2113308571]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 128
@@ -121,25 +130,25 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Decrease" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2" unique_id=1602608373]
+[node name="Decrease" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2" unique_id=1602608373]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▼"
 
-[node name="NumColVBoxCont3" type="VBoxContainer" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=55859642]
+[node name="NumColVBoxCont3" type="VBoxContainer" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont" unique_id=55859642]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Increase" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3" unique_id=1724327563]
+[node name="Increase" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3" unique_id=1724327563]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▲"
 
-[node name="Number" type="Label" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3" unique_id=957443144]
+[node name="Number" type="Label" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3" unique_id=957443144]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 128
@@ -147,9 +156,27 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Decrease" type="Button" parent="CanvasLayer/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3" unique_id=924538112]
+[node name="Decrease" type="Button" parent="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3" unique_id=924538112]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_font_sizes/font_size = 36
 text = "▼"
+
+[node name="SfxScrollClick" type="AudioStreamPlayer2D" parent="." unique_id=1272127897]
+stream = ExtResource("3_aadgw")
+max_polyphony = 32
+
+[node name="SfxCaseOpen" type="AudioStreamPlayer2D" parent="." unique_id=823113727]
+stream = ExtResource("4_v02gh")
+volume_db = 15.0
+
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/ButtonBriefcase" to="BriefcaseMinigameCanvas" method="_on_case_pressed"]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0/Increase" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [0, 1]]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont0/Decrease" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [0, -1]]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1/Increase" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [1, 1]]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont1/Decrease" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [1, -1]]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2/Increase" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [2, 1]]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont2/Decrease" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [2, -1]]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3/Increase" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [3, 1]]
+[connection signal="pressed" from="BriefcaseMinigameCanvas/Control/BriefcaseUIPanel/NumRowHBoxCont/NumColVBoxCont3/Decrease" to="BriefcaseMinigameCanvas" method="_on_arrow_pressed" binds= [3, -1]]
