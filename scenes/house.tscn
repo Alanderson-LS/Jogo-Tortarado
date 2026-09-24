@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dmb4qt2okhv0s"]
 
 [ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="1_d7po0"]
+[ext_resource type="Script" uid="uid://xxber3ayswrc" path="res://scripts/spawn_marker.gd" id="1_qtlar"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2i0da"]
 a = Vector2(-1000, 0)
@@ -8,8 +9,12 @@ b = Vector2(1000, 0)
 
 [node name="House" type="Node2D" unique_id=1394089690]
 
-[node name="Door" type="Marker2D" parent="." unique_id=1810944603 groups=["spawn point"]]
+[node name="Door" type="Marker2D" parent="." unique_id=277418770 groups=["spawn point"]]
 position = Vector2(49, -80)
+script = ExtResource("1_qtlar")
+spawn_characters = Array[String](["belonisia", "bibiana"])
+active_character = "bibiana"
+metadata/_custom_type_script = "uid://xxber3ayswrc"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1219923547]
 

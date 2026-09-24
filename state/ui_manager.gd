@@ -16,7 +16,7 @@ func set_current_task(task: String) -> void:
 	current_task = task
 	task_changed.emit(current_task)
 
-func update_ui(active_player: int) -> void:
+func update_ui(active_player: String) -> void:
 	update_inventory(GameState.active_inventory())
 
 func clear_selected_slot():

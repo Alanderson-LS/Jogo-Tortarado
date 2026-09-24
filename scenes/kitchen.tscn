@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dkg5k0jttda7y"]
 
 [ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="1_bems3"]
-[ext_resource type="PackedScene" uid="uid://msbs60ar4rsm" path="res://scenes/player.tscn" id="1_mrp8g"]
+[ext_resource type="Script" uid="uid://xxber3ayswrc" path="res://scripts/spawn_marker.gd" id="1_v3ycp"]
 [ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="2_2b6py"]
 [ext_resource type="Material" uid="uid://n1ysel4epily" path="res://shaders/outline/default_outline.tres" id="2_v3ycp"]
 
@@ -18,17 +18,21 @@ b = Vector2(-64000, 0)
 
 [node name="Kitchen" type="Node2D" unique_id=1310269846]
 
-[node name="kitchen_spawner" type="Marker2D" parent="." unique_id=1357652193]
+[node name="Kitchen" type="Marker2D" parent="." unique_id=1566047050 groups=["spawn point"]]
 position = Vector2(341, -111.99999)
 rotation = 3.1415927
 scale = Vector2(0.75653094, -0.44983667)
+script = ExtResource("1_v3ycp")
+spawn_characters = Array[String](["belonisia", "bibiana"])
+active_character = "belonisia"
+metadata/_custom_type_script = "uid://xxber3ayswrc"
 
 [node name="DoorTransition" type="Area2D" parent="." unique_id=1036265615]
 position = Vector2(730.99994, -43)
 scale = Vector2(-0.75653094, 0.44983667)
 script = ExtResource("1_bems3")
 target_scene = "uid://beufraofiugvr"
-spawn_point = "scare_bird"
+spawn_point = "ScareBird"
 metadata/_custom_type_script = "uid://c0pvna5rlt7q3"
 
 [node name="HouseDoor" type="Marker2D" parent="DoorTransition" unique_id=1348850778]
@@ -82,9 +86,6 @@ texture = ExtResource("2_2b6py")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2" unique_id=1685880122]
 scale = Vector2(64.05362, 7.92134)
 shape = SubResource("SegmentShape2D_8w0r3")
-
-[node name="Character" parent="." unique_id=1215354689 instance=ExtResource("1_mrp8g")]
-position = Vector2(164, -157)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=760377231]
 

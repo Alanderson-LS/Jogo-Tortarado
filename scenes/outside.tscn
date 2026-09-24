@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dnrxcns4fxtjd" path="res://scenes/stair_transition.tscn" id="3_8lkp2"]
 [ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="3_udpx5"]
 [ext_resource type="Material" uid="uid://n1ysel4epily" path="res://shaders/outline/default_outline.tres" id="6_bkgx0"]
+[ext_resource type="Script" uid="uid://xxber3ayswrc" path="res://scripts/spawn_marker.gd" id="7_lt5my"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(262.51276, 237.4997)
@@ -75,7 +76,7 @@ shape = SubResource("RectangleShape2D_8w0r3")
 position = Vector2(-107, -149)
 script = ExtResource("3_udpx5")
 target_scene = "uid://dkg5k0jttda7y"
-spawn_point = "kitchen_spawner"
+spawn_point = "Kitchen"
 metadata/_custom_type_script = "uid://c0pvna5rlt7q3"
 
 [node name="HouseDoor" type="Marker2D" parent="DoorTransition" unique_id=475116156]
@@ -88,8 +89,12 @@ material = ExtResource("6_bkgx0")
 scale = Vector2(1, 1.48)
 texture = ExtResource("1_nsm10")
 
-[node name="scare_bird" type="Marker2D" parent="." unique_id=609264174 groups=["spawn point"]]
+[node name="ScareBird" type="Marker2D" parent="." unique_id=1721419977 groups=["spawn point"]]
 position = Vector2(-3284, -63)
+script = ExtResource("7_lt5my")
+spawn_characters = Array[String](["belonisia", "bibiana"])
+active_character = "belonisia"
+metadata/_custom_type_script = "uid://xxber3ayswrc"
 
 [node name="KeyGiber" type="Area2D" parent="." unique_id=934398588]
 position = Vector2(1016, -143)
@@ -105,8 +110,12 @@ script = ExtResource("2_bkgx0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KeyTakerer" unique_id=1764722034]
 shape = SubResource("RectangleShape2D_l0mo1")
 
-[node name="Outside" type="Marker2D" parent="." unique_id=668393266 groups=["spawn point"]]
+[node name="Outside" type="Marker2D" parent="." unique_id=851272880 groups=["spawn point"]]
 position = Vector2(-665, -215)
+script = ExtResource("7_lt5my")
+spawn_characters = Array[String](["belonisia", "bibiana"])
+active_character = "bibiana"
+metadata/_custom_type_script = "uid://xxber3ayswrc"
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=769522013]
 

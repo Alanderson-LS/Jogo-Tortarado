@@ -7,7 +7,7 @@ var speed = 300.0
 
 var nearby_interactable: Node = null
 
-@export var character_id: int
+@export var character_id: String
 @export var can_move: bool = true
 
 func _ready() -> void:
