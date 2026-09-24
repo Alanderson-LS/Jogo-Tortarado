@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://btet3ghnd7w3" path="res://scripts/some_testing_object.gd" id="1_7r1kg"]
 [ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="1_nsm10"]
 [ext_resource type="Script" uid="uid://dwijyavv5h52b" path="res://scripts/zeca.gd" id="1_uaw8k"]
+[ext_resource type="Script" uid="uid://bxld2t7ujookp" path="res://scripts/bird_scaring_loader.gd" id="2_5tstl"]
 [ext_resource type="Script" uid="uid://chrku8u2w8nmm" path="res://scripts/electric_bogaloo.gd" id="2_bkgx0"]
 [ext_resource type="PackedScene" uid="uid://dnrxcns4fxtjd" path="res://scenes/stair_transition.tscn" id="3_8lkp2"]
 [ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="3_udpx5"]
@@ -51,6 +52,7 @@ texture = ExtResource("1_nsm10")
 
 [node name="Area2D" type="Area2D" parent="Crow" unique_id=2044926982]
 position = Vector2(1.8776904, 33.386646)
+script = ExtResource("2_5tstl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crow/Area2D" unique_id=356593387]
 position = Vector2(-20.001038, -74.99991)

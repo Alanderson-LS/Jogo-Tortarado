@@ -14,6 +14,9 @@ func _ready() -> void:
 	Dialogic.timeline_started.connect(_on_dialogue_started)
 	Dialogic.timeline_ended.connect(_on_dialogue_ended)
 	UiManager.set_current_task("teste real de task aaaaaa")
+	
+	GameState.main.minigame_started.connect(_on_minigame_started)
+	GameState.main.minigame_ended.connect(_on_minigame_ended)
 
 func set_controlled(controlled: bool):
 	if controlled:
@@ -60,6 +63,12 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 		if area.has_method("highlight"):
 			area.highlight(false)
 		nearby_interactable = null
+
+func _on_minigame_started():
+	can_move = false
+
+func _on_minigame_ended():
+	can_move = true
 
 func _on_dialogue_started() -> void:
 	can_move = false

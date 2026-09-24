@@ -57,7 +57,7 @@ func create_bird(x, y, landPos):
 	add_child(new_bird)
 "
 
-[node name="ScaringBirds" type="Control" unique_id=1348221452 node_paths=PackedStringArray("sfx_Crow", "sfx_Throw", "bird_control", "mira")]
+[node name="ScaringBirds" type="Control" unique_id=1348221452 node_paths=PackedStringArray("sfx_Crow", "sfx_Throw", "bird_control", "mira") groups=["minigame"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
