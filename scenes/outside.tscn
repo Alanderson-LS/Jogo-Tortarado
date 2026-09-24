@@ -2,10 +2,17 @@
 
 [ext_resource type="Script" uid="uid://btet3ghnd7w3" path="res://scripts/some_testing_object.gd" id="1_7r1kg"]
 [ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="1_nsm10"]
+[ext_resource type="Script" uid="uid://dwijyavv5h52b" path="res://scripts/zeca.gd" id="1_uaw8k"]
 [ext_resource type="Script" uid="uid://chrku8u2w8nmm" path="res://scripts/electric_bogaloo.gd" id="2_bkgx0"]
 [ext_resource type="PackedScene" uid="uid://dnrxcns4fxtjd" path="res://scenes/stair_transition.tscn" id="3_8lkp2"]
 [ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="3_udpx5"]
 [ext_resource type="Material" uid="uid://n1ysel4epily" path="res://shaders/outline/default_outline.tres" id="6_bkgx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
+size = Vector2(262.51276, 237.4997)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l85ff"]
+size = Vector2(127.5, 187)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2i0da"]
 radius = 136.09187
@@ -32,10 +39,57 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l85ff"]
-size = Vector2(127.5, 187)
-
 [node name="Outside" type="Node2D" unique_id=1893350408]
+
+[node name="Crow" type="Node2D" parent="." unique_id=1799719881]
+position = Vector2(-4058.9998, -30)
+scale = Vector2(1.5975798, 0.3893772)
+
+[node name="Sprite2D" type="Sprite2D" parent="Crow" unique_id=537755899]
+texture = ExtResource("1_nsm10")
+
+[node name="Area2D" type="Area2D" parent="Crow" unique_id=2044926982]
+position = Vector2(1.8776904, 33.386646)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crow/Area2D" unique_id=356593387]
+position = Vector2(-20.001038, -74.99991)
+scale = Vector2(0.9999998, 1)
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[node name="Zeca" type="Node2D" parent="." unique_id=324790912]
+position = Vector2(-3175, -34)
+scale = Vector2(1.263954, 0.62400097)
+
+[node name="Sprite2D" type="Sprite2D" parent="Zeca" unique_id=2056038797]
+texture = ExtResource("1_nsm10")
+
+[node name="Area2D" type="Area2D" parent="Zeca" unique_id=707752180]
+script = ExtResource("1_uaw8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zeca/Area2D" unique_id=390585248]
+position = Vector2(-20.001038, -74.99991)
+scale = Vector2(0.9999998, 1)
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[node name="DoorTransition" type="Area2D" parent="." unique_id=2109612268]
+position = Vector2(-107, -149)
+script = ExtResource("3_udpx5")
+target_scene = "uid://dkg5k0jttda7y"
+spawn_point = "kitchen_spawner"
+metadata/_custom_type_script = "uid://c0pvna5rlt7q3"
+
+[node name="HouseDoor" type="Marker2D" parent="DoorTransition" unique_id=475116156]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTransition" unique_id=1862073015]
+shape = SubResource("RectangleShape2D_l85ff")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorTransition" unique_id=1080675684]
+material = ExtResource("6_bkgx0")
+scale = Vector2(1, 1.48)
+texture = ExtResource("1_nsm10")
+
+[node name="scare_bird" type="Marker2D" parent="." unique_id=609264174 groups=["spawn point"]]
+position = Vector2(-3284, -63)
 
 [node name="KeyGiber" type="Area2D" parent="." unique_id=934398588]
 position = Vector2(1016, -143)
@@ -166,7 +220,7 @@ scale = Vector2(5.9921875, 9)
 texture = ExtResource("1_nsm10")
 
 [node name="Icon5" type="Sprite2D" parent="Mountains" unique_id=1907886804]
-position = Vector2(3474.685, 689.26184)
+position = Vector2(3448, 665.9999)
 rotation = 0.35142136
 scale = Vector2(8.16619, 5.315786)
 texture = ExtResource("1_nsm10")

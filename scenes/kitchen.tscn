@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://dkg5k0jttda7y"]
+
+[ext_resource type="Script" uid="uid://c0pvna5rlt7q3" path="res://scripts/door_transition.gd" id="1_bems3"]
+[ext_resource type="PackedScene" uid="uid://msbs60ar4rsm" path="res://scenes/player.tscn" id="1_mrp8g"]
+[ext_resource type="Texture2D" uid="uid://cpvsqarvluq5" path="res://icon.svg" id="2_2b6py"]
+[ext_resource type="Material" uid="uid://n1ysel4epily" path="res://shaders/outline/default_outline.tres" id="2_v3ycp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3o0j"]
+size = Vector2(127.5, 187)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8w0r3"]
+a = Vector2(-0.13595079, -36.48373)
+b = Vector2(0.045316927, 31.055355)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bems3"]
+a = Vector2(64000, 0)
+b = Vector2(-64000, 0)
+
+[node name="Kitchen" type="Node2D" unique_id=1310269846]
+
+[node name="kitchen_spawner" type="Marker2D" parent="." unique_id=1357652193]
+position = Vector2(341, -111.99999)
+rotation = 3.1415927
+scale = Vector2(0.75653094, -0.44983667)
+
+[node name="DoorTransition" type="Area2D" parent="." unique_id=1036265615]
+position = Vector2(730.99994, -43)
+scale = Vector2(-0.75653094, 0.44983667)
+script = ExtResource("1_bems3")
+target_scene = "uid://beufraofiugvr"
+spawn_point = "scare_bird"
+metadata/_custom_type_script = "uid://c0pvna5rlt7q3"
+
+[node name="HouseDoor" type="Marker2D" parent="DoorTransition" unique_id=1348850778]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTransition" unique_id=2055399336]
+shape = SubResource("RectangleShape2D_g3o0j")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorTransition" unique_id=1339596403]
+z_index = 1
+material = ExtResource("2_v3ycp")
+scale = Vector2(1, 1.48)
+texture = ExtResource("2_2b6py")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1042117629]
+offset_left = 903.0
+offset_top = -3.0000038
+offset_right = 943.0
+offset_bottom = 36.999996
+scale = Vector2(11.759998, -18.480001)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=238681335]
+layout_mode = 0
+offset_left = -228.57146
+offset_top = -14.826839
+offset_right = -188.57146
+offset_bottom = 25.17316
+scale = Vector2(11.759998, -3.4000022)
+color = Color(0, 0, 0, 1)
+
+[node name="Ground3" type="StaticBody2D" parent="." unique_id=1771522330]
+position = Vector2(807, -243)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground3" unique_id=2101239014]
+position = Vector2(0, 128)
+scale = Vector2(1.4567224, 6.612771)
+texture = ExtResource("2_2b6py")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3" unique_id=178910664]
+scale = Vector2(64.05362, 7.92134)
+shape = SubResource("SegmentShape2D_8w0r3")
+
+[node name="Ground2" type="StaticBody2D" parent="." unique_id=698817359]
+position = Vector2(4, -243)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground2" unique_id=370801942]
+position = Vector2(0, 128)
+scale = Vector2(1.4567224, 6.612771)
+texture = ExtResource("2_2b6py")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2" unique_id=1685880122]
+scale = Vector2(64.05362, 7.92134)
+shape = SubResource("SegmentShape2D_8w0r3")
+
+[node name="Character" parent="." unique_id=1215354689 instance=ExtResource("1_mrp8g")]
+position = Vector2(164, -157)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=760377231]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1986910476]
+position = Vector2(0, 128)
+scale = Vector2(100, 2)
+texture = ExtResource("2_2b6py")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1649159525]
+shape = SubResource("SegmentShape2D_bems3")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1394828991]
+offset_left = -565.0
+offset_top = 6.000004
+offset_right = -525.0
+offset_bottom = 46.000004
+scale = Vector2(11.759998, -18.480001)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2" unique_id=952087214]
+layout_mode = 0
+offset_left = -87.670044
+offset_top = 759.41547
+offset_right = -47.670044
+offset_bottom = 799.41547
+scale = Vector2(11.759998, -18.480001)
+color = Color(0, 0, 0, 1)

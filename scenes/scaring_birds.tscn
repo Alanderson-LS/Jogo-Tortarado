@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://parv05men1du" path="res://scripts/bird_scare/scaring_birds.gd" id="1_abvk6"]
 [ext_resource type="Texture2D" uid="uid://dmc4phgn7xcc1" path="res://assets/sprites/field.jpeg" id="1_bhb1x"]
-[ext_resource type="Texture2D" uid="uid://7eqqdakkridl" path="res://assets/sprites/rock.png" id="2_2inkj"]
+[ext_resource type="Texture2D" uid="uid://blgybxfu1lrpi" path="res://assets/sprites/rock.png" id="2_2inkj"]
 [ext_resource type="AudioStream" uid="uid://ua3e3p54vpp" path="res://assets/sounds/crow.mp3" id="3_2inkj"]
 [ext_resource type="Texture2D" uid="uid://1dyhvf5hndai" path="res://assets/sprites/mira.png" id="4_2inkj"]
 [ext_resource type="AudioStream" uid="uid://ca0uw0x02u02l" path="res://assets/sounds/throw2.mp3" id="4_hkx30"]

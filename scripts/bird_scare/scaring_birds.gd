@@ -4,7 +4,7 @@ extends Control
 @export var sfx_Throw: AudioStreamPlayer2D
 @export var bird_control: Node2D
 
-@export var projetil_texture: Texture2D
+@export var projetil_texture: Texture2D 
 @export var velocidade := 800.0
 @export var drop := 100.0
 @export var cooldown := 0.5
@@ -21,6 +21,7 @@ var landOptions = [100,200,300,400,500,600,700,800,900,1000]
 @export var birdsHit = 0
 
 var cooldown_restante := 0.0
+
 
 func mover_projetil(projetil, destino):
 	var inicio = projetil.position
@@ -92,7 +93,7 @@ func atirar():
 
 	projetil.texture = projetil_texture
 	projetil.size = Vector2(32, 32)
-	projetil.scale = Vector2(0.05, 0.05)
+	projetil.scale = Vector2(1, 1)
 	projetil.pivot_offset = projetil.size / 2
 	projetil.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	projetil.mouse_filter = Control.MOUSE_FILTER_IGNORE

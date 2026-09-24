@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d3te4d4iw5b6v"]
+
+[ext_resource type="Texture2D" uid="uid://blgybxfu1lrpi" path="res://assets/sprites/rock.png" id="1_2jx82"]
+[ext_resource type="Script" uid="uid://bfgylyi7hocrr" path="res://assets/items/item_data.gd" id="1_b20aq"]
+
+[resource]
+script = ExtResource("1_b20aq")
+display_name = "rock"
+id = &"rock"
+description = "A rock used to scare birds."
+icon = ExtResource("1_2jx82")
+metadata/_custom_type_script = "uid://bfgylyi7hocrr"
