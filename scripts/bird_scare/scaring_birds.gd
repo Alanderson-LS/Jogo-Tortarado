@@ -4,7 +4,6 @@ signal minigame_ended
 
 @export var sfx_Crow: AudioStreamPlayer2D
 @export var sfx_Throw: AudioStreamPlayer2D
-@export var bird_control: Node2D
 
 @export var projetil_texture: Texture2D 
 @export var velocidade := 800.0
@@ -20,7 +19,7 @@ signal minigame_ended
 const BIRD = preload("res://scenes/bird.tscn")
 
 var landOptions = [100,200,300,400,500,600,700,800,900,1000]
-@export var birdsHit = 0
+@export var birds_hit = 0
 
 var cooldown_restante := 0.0
 
@@ -83,8 +82,8 @@ func diminuir_projetil(projetil):
 func _on_pedra_hit(alvo: Area2D, projetil: Control) -> void:
 	var bird = alvo.get_parent()
 	if bird.has_method("sair"):
-		bird_control.birds_hit += 1
-		bird_control.check_win_condition(bird_control.birds_hit)
+		birds_hit += 1
+		check_win_condition(birds_hit)
 		sfx_Crow.play()
 		bird.sair()
 	if is_instance_valid(projetil):
@@ -162,3 +161,9 @@ func create_bird(x, y, landPos):
 	)
 	
 	add_child(new_bird)
+
+func _ready() -> void:
+	create_bird(0, 200, pick_random_no_repeat())
+	create_bird(0, 100, pick_random_no_repeat())
+	create_bird(1150, 200, pick_random_no_repeat())
+	create_bird(1150, 100, pick_random_no_repeat())
