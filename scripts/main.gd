@@ -27,6 +27,7 @@ func new_player(global_position: Vector2, id: String):
 	return player
 
 func load_scene(scene: String, spawn_name: String):
+	GameState.active_characters = []
 	for child in level_container.get_children():
 		child.queue_free()
 	
@@ -43,6 +44,7 @@ func load_scene(scene: String, spawn_name: String):
 				current_scene.add_child(
 					new_player(spawn.global_position, character)
 				)
+				GameState.active_characters.append(character)
 			if spawn.active_character != null:
 				GameState.change_active_player(spawn.active_character)
 			break
@@ -58,5 +60,4 @@ func load_minigame(name: String):
 func _on_minigame_ended():
 	#kill 8 billion minigames
 	for minigame in get_tree().get_nodes_in_group("minigame"):
-		print(minigame)
 		minigame.queue_free()

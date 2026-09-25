@@ -5,18 +5,12 @@ const PLAYER_SCENE = preload("res://scenes/player.tscn")
 signal active_player_changed(id: String)
 signal inventory_updated
 
-#TODO: maybe change to a string?
 var active_player: String
-var can_change_player: bool = true
 
-#TODO: Maybe switch to a dictionary
 # indexed by player id
-var inventories: Dictionary[String, Inventory] = {"belonisia": Inventory.new(), "bibiana": Inventory.new()}
+var inventories: Dictionary[String, Inventory] = {}
 
-var active_characters = [
-	"belonisia",
-	"bibiana"
-]
+var active_characters: Array[String] = []
 
 var main
 
@@ -32,7 +26,7 @@ func change_active_player(new_active_player: String):
 	active_player_changed.emit(active_player)
 
 func active_inventory() -> Inventory:
-	return inventories[active_player]
+	return inventories.get_or_add(active_player, Inventory.new())
 
 func held_item_index() -> int:
 	return active_inventory().current_item

@@ -44,6 +44,5 @@ func move_player_along_path(t: float):
 	player.global_position = start_position + offset
 
 func _on_body_entered(body: Node2D) -> void:
-	print_debug(body, body.name)
 	if body is CharacterBody2D and body.is_in_group("player"):
 		start_transition(body)
