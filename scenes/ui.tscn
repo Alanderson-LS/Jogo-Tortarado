@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ds21gqikj36pd" path="res://scenes/inventory_slot.tscn" id="2_x4jx1"]
 [ext_resource type="PackedScene" uid="uid://d22kpim6mmcyu" path="res://scenes/debug_panel.tscn" id="3_yev5y"]
 [ext_resource type="Script" uid="uid://ty2c0i1pwil8" path="res://scripts/character_selector.gd" id="4_gdt2y"]
+[ext_resource type="Script" uid="uid://doggs3wn5chsm" path="res://scripts/interact_button.gd" id="5_8dubc"]
+[ext_resource type="Script" uid="uid://d4flgd85231as" path="res://scripts/change_character_button.gd" id="5_wm3ai"]
 
 [node name="Ui" type="Control" unique_id=246404245]
 layout_mode = 3
@@ -137,3 +139,51 @@ script = ExtResource("4_gdt2y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelectorContainer" unique_id=1127895047]
 layout_mode = 2
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=611191505]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 0
+offset_top = 420.0
+offset_right = 300.0
+offset_bottom = 720.0
+grow_vertical = 0
+joystick_size = 200.0
+tip_size = 100.0
+deadzone_ratio = 0.1
+action_left = &"left"
+action_right = &"right"
+action_up = &"up"
+action_down = &"down"
+
+[node name="InputButtons" type="HBoxContainer" parent="." unique_id=2074615532]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -604.0
+offset_top = -300.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Interact" type="Button" parent="InputButtons" unique_id=1520677176]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 50
+text = "Interact"
+script = ExtResource("5_8dubc")
+
+[node name="ChangeCharacter" type="Button" parent="InputButtons" unique_id=1694119187]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(300, -1)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 50
+text = "Change character"
+autowrap_mode = 2
+script = ExtResource("5_wm3ai")
+
+[connection signal="pressed" from="InputButtons/Interact" to="InputButtons/Interact" method="_on_pressed"]
+[connection signal="pressed" from="InputButtons/ChangeCharacter" to="InputButtons/ChangeCharacter" method="_on_pressed"]

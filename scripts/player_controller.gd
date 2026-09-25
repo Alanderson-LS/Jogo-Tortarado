@@ -27,8 +27,7 @@ func set_controlled(controlled: bool):
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if character_id == GameState.active_player:
-		if can_move:
+	if character_id == GameState.active_player and can_move:
 			var direction := Input.get_axis("left", "right")
 			velocity.x = direction * speed
 	else:
