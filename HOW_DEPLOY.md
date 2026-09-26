@@ -31,3 +31,10 @@ Garanta essas configurações:
 Exportar Projeto
 
 5.
+```bash
+git checkout gh-pages
+find . -maxdepth 1 -type f ! -name '.gitignore' -delete
+git add .
+git commit -m "Update"
+git push origin gh-pages
+```
